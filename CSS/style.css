@@ -100,7 +100,6 @@ section {
 #title-section {
     color: #e3a8e1;
     font-size: 100px;
-    margin-top: 100px !important;
 }
 
 #card {
@@ -125,6 +124,26 @@ section {
 
 .iframe-ropa {
     height: 300px;
+}
+
+form {
+    color: #e3a8e1;
+}
+
+form select, form input, form textarea {
+    background-color: #4f4f4f !important;
+    color: #e3a8e1 !important;
+    border: 1px solid #e3a8e1 !important;
+}
+
+#form-article {
+    background: rgba(51, 51, 51, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.8px);
+    -webkit-backdrop-filter: blur(5.8px);
+    border: 1px solid #e3a8e1;
+    transition: 0.2s ease-in-out;
 }
 
 footer {

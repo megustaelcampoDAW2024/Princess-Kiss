@@ -7,144 +7,315 @@
         <link rel="stylesheet" type="text/css" href="./CSS/style.css">
         <!-- BOOTSTRAP -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- VUE -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <!-- JS -->
-        <!-- <script src="./JS/gif-move.js" defer></script> -->
+        <script src="./JS/app.js" defer></script>
         <title>Princess Kiss</title>
-    </head>
+    </head> 
     <body>
-        <nav>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Planes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contáctanos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Déjanos una Reseña</a>
-                </li>
-            </ul>
-        </nav>
-        <header>
-            <div class="d-flex justify-content-around align-items-between p-3">
-                <div>
-                    <h1 class="display-1 mb-0">Princess Kiss Cafe</h1>
-                    <p class="">Click on the princess to get Coffee!</p>
+        <div id="app">
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" @click="showSection('planes')">Planes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" @click="showSection('merch')">Merchandising</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" @click="showSection('ayudanos')">Ayúdanos a Mejorar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" @click="showSection('contactanos')">Contáctanos</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Informacion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #333333;">
+                            <li><a class="dropdown-item" href="#" @click="showSection('about')">Sobre Nosotros</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('services')">Servicios</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('faq')">Preguntas Frecuentes</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <header>
+                <div class="d-flex justify-content-around align-items-between p-3">
+                    <div>
+                        <h1 class="display-1 mb-0">Princess Kiss Cafe</h1>
+                        <p class="">Click on the princess to get Coffee!</p>
+                    </div>
+                    <div>
+                        <img id="maidGif" src="./img/logo-negro.png" alt="Maid_Gif">
+                    </div>
                 </div>
-                <div>
-                    <img id="maidGif" src="./img/logo-negro.png" alt="Maid_Gif">
-                </div>
+            </header>
+            <div class="maids">
+                <img src="./img/maids.png" alt="maids" id="maids">
+                <img src="./img/maids.png" alt="maids" id="maids-2">
             </div>
-        </header>
-        <div class="maids">
-            <img src="./img/maids.png" alt="maids" id="maids">
-            <img src="./img/maids.png" alt="maids" id="maids-2">
+            <section>
+    
+                <article v-if="currentSection === 'planes'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Elige tu plan</h1>
+                    </div>
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div id="card" class="card text-white p-5 pt-3">
+                                    <img src="./img/maid-1.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 1">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Basico</h4>
+                                        <p class="card-text p-0">Disfruta de nuestro servicio básico con acceso limitado a contenido exclusivo.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="card" class="card text-white p-5 pt-3">
+                                    <img src="./img/maid-2.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 2">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Estandar</h4>
+                                        <p class="card-text p-0">Accede a más contenido y beneficios con nuestro plan estándar.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="card" class="card text-white p-5 pt-3">
+                                    <img src="./img/maid-3.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 3">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Premium</h4>
+                                        <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+    
+                <article v-else-if="currentSection === 'merch'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Merchandising</h1>
+                    </div>
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div id="card" class="card text-white p-4 pt-3">
+                                    <iframe class="iframe-ropa" src='https://my.spline.design/tshirtbodymaledarkcopy-637aed276e86d7316ef75d3f94159539/' frameborder='0' width='100%' height='100%'></iframe>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Basico</h4>
+                                        <p class="card-text p-0">Disfruta de nuestro servicio básico con acceso limitado a contenido exclusivo.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div id="card" class="card text-white  p-4 pt-3">
+                                    <iframe class="iframe-ropa" src='https://my.spline.design/tshirtbodyfemaledarkcopy-0d3e1259e1df99eda6067ea842bf5e3a/' frameborder='0' width='100%' height='100%'></iframe>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Estandar</h4>
+                                        <p class="card-text p-0">Accede a más contenido y beneficios con nuestro plan estándar.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div id="card" class="card text-white  p-4 pt-3">
+                                    <iframe class="iframe-ropa" src='https://my.spline.design/hoodiedarkcopy-e70b1e542a23287c677a328070344721/' frameborder='0' width='100%' height='100%'></iframe>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Premium</h4>
+                                        <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div id="card" class="card text-white  p-4 pt-3">
+                                    <iframe class="iframe-ropa" src='https://my.spline.design/tshirtfoldeddarkcopy-405b9e9a5ac9fccf7f4a688e88efdd7c/' frameborder='0' width='100%' height='100%'></iframe>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plan Premium</h4>
+                                        <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
+                                        <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+    
+                <article v-else-if="currentSection === 'ayudanos'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Ayudanos a mejorar</h1>
+                    </div>
+                    <div class="container mt-5 p-5" id="form-article">
+                        <form>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">1. ¿Cuál es tu edad?</label>
+                                <select class="form-select" id="age" required>
+                                    <option value="18-24">18-24</option>
+                                    <option value="25-34">25-34</option>
+                                    <option value="35-44">35-44</option>
+                                    <option value="45+">45+</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">2. ¿Estarías dispuesto a pagar por contenido online de calidad?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payForContent" id="payYes" value="Sí" required>
+                                    <label class="form-check-label" for="payYes">Sí</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payForContent" id="payNo" value="No" required>
+                                    <label class="form-check-label" for="payNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="paymentModel" class="form-label">3. ¿Qué modelo de pago prefieres para acceder a nuestra plataforma?</label>
+                                <select class="form-select" id="paymentModel" required>
+                                    <option value="Pago por uso individual">Pago por uso individual (esa tarde)</option>
+                                    <option value="Suscripción mensual/anual">Suscripción mensual/anual</option>
+                                    <option value="Acceso gratuito con publicidad">Acceso gratuito con publicidad</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">4. ¿Tienes interés en la cultura japonesa o en el concepto de los maid cafés?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="interestInCulture" id="cultureYes" value="Sí" required>
+                                    <label class="form-check-label" for="cultureYes">Sí</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="interestInCulture" id="cultureNo" value="No" required>
+                                    <label class="form-check-label" for="cultureNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">5. ¿Te gustaría interactuar con personal disfrazado de maid en un entorno virtual?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="interactWithMaids" id="interactYes" value="Sí" required>
+                                    <label class="form-check-label" for="interactYes">Sí</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="interactWithMaids" id="interactNo" value="No" required>
+                                    <label class="form-check-label" for="interactNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="usageFrequency" class="form-label">6. ¿Con qué frecuencia utilizarías un servicio de café maid online?</label>
+                                <select class="form-select" id="usageFrequency" required>
+                                    <option value="Diario">Diario</option>
+                                    <option value="Semanal">Semanal</option>
+                                    <option value="Mensual">Mensual</option>
+                                    <option value="Solo en ocasiones especiales">Solo en ocasiones especiales</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">7. ¿Qué tipo de experiencias te gustaría tener en un café maid online? (Selecciona hasta 3)</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="experience1" name="experiences" value="Charlas personalizadas con maids">
+                                    <label class="form-check-label" for="experience1">Charlas personalizadas con maids</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="experience2" name="experiences" value="Juegos interactivos">
+                                    <label class="form-check-label" for="experience2">Juegos interactivos</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="experience3" name="experiences" value="Actividades temáticas">
+                                    <label class="form-check-label" for="experience3">Actividades temáticas (cumpleaños, celebraciones)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="experience4" name="experiences" value="Talleres o eventos especiales">
+                                    <label class="form-check-label" for="experience4">Talleres o eventos especiales (ej. clases de cocina)</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="preferredService" class="form-label">8. ¿Qué tipo de bebida o servicio preferirías recibir como parte de la experiencia?</label>
+                                <select class="form-select" id="preferredService" required>
+                                    <option value="Servicio interactivo solo">Servicio interactivo solo (sin bebida)</option>
+                                    <option value="Pedido de bebidas personalizadas a domicilio">Pedido de bebidas personalizadas a domicilio (vía app)</option>
+                                    <option value="Packs de té/café enviados previamente">Packs de té/café enviados previamente para disfrutar durante la interacción</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sessionDuration" class="form-label">9. ¿Cuánto tiempo te gustaría que durará cada sesión en el café maid online?</label>
+                                <select class="form-select" id="sessionDuration" required>
+                                    <option value="Menos de 30 minutos">Menos de 30 minutos</option>
+                                    <option value="30-60 minutos">30-60 minutos</option>
+                                    <option value="Más de una hora">Más de una hora</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">10. ¿Te gustaría que la plataforma incluyera una tienda en línea de productos exclusivos?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="onlineStore" id="storeYes" value="Sí" required>
+                                    <label class="form-check-label" for="storeYes">Sí</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="onlineStore" id="storeNo" value="No" required>
+                                    <label class="form-check-label" for="storeNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">11. ¿Te gustaría poder elegir el atuendo o estilo de las maids durante la sesión?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="chooseOutfit" id="outfitYes" value="Sí" required>
+                                    <label class="form-check-label" for="outfitYes">Sí</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="chooseOutfit" id="outfitNo" value="No" required>
+                                    <label class="form-check-label" for="outfitNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="preferenceReason" class="form-label">12. ¿Qué te haría preferir este servicio frente a otras alternativas de entretenimiento o interacción online?</label>
+                                <select class="form-select" id="preferenceReason" required>
+                                    <option value="Precio competitivo">Precio competitivo</option>
+                                    <option value="Originalidad de la experiencia">Originalidad de la experiencia</option>
+                                    <option value="Calidad del servicio y personal">Calidad del servicio y personal</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <a type="submit" id="btn-plan" class="btn btn-primary">Enviar</a>
+                        </form>
+                    </div>
+                </article>
+    
+                <article v-else-if="currentSection === 'contactanos'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Contactanos</h1>
+                    </div>
+                    <div class="container mt-5 p-5" id="form-article">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Asunto</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <a type="submit" id="btn-plan" class="btn btn-primary">Enviar</a>
+                        </form>
+                    </div>
+                </article>
+    
+            </section>
+            <footer><p>Derechos reservados por Princess Kiss Maid Café S.L. &reg;</p></footer>
         </div>
-        <section>
-
-            <article>
-                <div>
-                    <h1 class="text-center" style="color: #e3a8e1; font-size: 100px;">Elige tu plan</h1>
-                </div>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div id="card" class="card text-white p-5 pt-3">
-                                <img src="./img/maid-1.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 1">
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Basico</h4>
-                                    <p class="card-text p-0">Disfruta de nuestro servicio básico con acceso limitado a contenido exclusivo.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div id="card" class="card text-white p-5 pt-3">
-                                <img src="./img/maid-2.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 2">
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Estandar</h4>
-                                    <p class="card-text p-0">Accede a más contenido y beneficios con nuestro plan estándar.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div id="card" class="card text-white p-5 pt-3">
-                                <img src="./img/maid-3.png" class="card-img-top p-5 pt-0 pb-2" alt="Plan 3">
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Premium</h4>
-                                    <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article>
-                <div>
-                    <h1 class="text-center" id="title-section">Merchandising</h1>
-                </div>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div id="card" class="card text-white p-4 pt-3">
-                                <iframe class="iframe-ropa" src='https://my.spline.design/tshirtbodymaledarkcopy-637aed276e86d7316ef75d3f94159539/' frameborder='0' width='100%' height='100%'></iframe>
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Basico</h4>
-                                    <p class="card-text p-0">Disfruta de nuestro servicio básico con acceso limitado a contenido exclusivo.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div id="card" class="card text-white  p-4 pt-3">
-                                <iframe class="iframe-ropa" src='https://my.spline.design/tshirtbodyfemaledarkcopy-0d3e1259e1df99eda6067ea842bf5e3a/' frameborder='0' width='100%' height='100%'></iframe>
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Estandar</h4>
-                                    <p class="card-text p-0">Accede a más contenido y beneficios con nuestro plan estándar.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div id="card" class="card text-white  p-4 pt-3">
-                                <iframe class="iframe-ropa" src='https://my.spline.design/hoodiedarkcopy-e70b1e542a23287c677a328070344721/' frameborder='0' width='100%' height='100%'></iframe>
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Premium</h4>
-                                    <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div id="card" class="card text-white  p-4 pt-3">
-                                <iframe class="iframe-ropa" src='https://my.spline.design/tshirtfoldeddarkcopy-405b9e9a5ac9fccf7f4a688e88efdd7c/' frameborder='0' width='100%' height='100%'></iframe>
-                                <div class="card-body">
-                                    <h4 class="card-title">Plan Premium</h4>
-                                    <p class="card-text p-0">Obtén acceso ilimitado a todo nuestro contenido y beneficios exclusivos.</p>
-                                    <a href="#" id="btn-plan" class="btn btn-primary">Más información</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article>
-                <div>
-                    <h1 class="text-center" id="title-section">Ayudanos a mejorar</h1>
-                </div>
-                <div class="container mt-5">
-                    
-                </div>
-            </article>
-
-        </section>
-        <footer><p>Derechos reservados por Princess Kiss Maid Café S.L. &reg;</p></footer>
     </body>
 </html>
