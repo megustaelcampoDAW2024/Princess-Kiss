@@ -14,6 +14,8 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <!-- JS -->
         <script src="./JS/app.js" defer></script>
+        <!-- METADATA -->
+        <link rel="icon" href="./img/logo-negro.png" type="image/x-icon">
         <title>Princess Kiss</title>
     </head> 
     <body>
@@ -37,9 +39,14 @@
                             Informacion
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #333333;">
-                            <li><a class="dropdown-item" href="#" @click="showSection('about')">Sobre Nosotros</a></li>
-                            <li><a class="dropdown-item" href="#" @click="showSection('services')">Servicios</a></li>
-                            <li><a class="dropdown-item" href="#" @click="showSection('faq')">Preguntas Frecuentes</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('servicio')">Definición del Servicio</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('estudio_mercado')">Estudio de Mercado</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('marqueting')">Plan de Marqueting</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('infraestructura')">Infraestructuras</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('recursos_humanos')">R. Humanos</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('plan_financiero')">Plan Financiero</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('seguridad')">Seguridad</a></li>
+                            <li><a class="dropdown-item" href="#" @click="showSection('tramites')">Trámites</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -311,6 +318,78 @@
                             </div>
                             <a type="submit" id="btn-plan" class="btn btn-primary">Enviar</a>
                         </form>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'servicio'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Definicion del Servicio</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre la definición de servicio.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'estudio_mercado'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Estudio de Mercado</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre el estudio de mercado.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'marqueting'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Plan de Marqueting</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre el plan de marqueting.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'infraestructura'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Infraestructuras</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre las infraestructuras.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'recursos_humanos'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Recursos Humanos</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre los recursos humanos.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'plan_financiero'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Plan Financiero</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre el plan financiero.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'seguridad'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Seguridad</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre la seguridad.</p>
+                    </div>
+                </article>
+
+                <article v-else-if="currentSection === 'tramites'">
+                    <div>
+                        <h1 class="text-center" id="title-section">Tramites</h1>
+                    </div>
+                    <div class="container mt-5" id="content-article">
+                        <p>Contenido sobre los trámites.</p>
                     </div>
                 </article>
     
