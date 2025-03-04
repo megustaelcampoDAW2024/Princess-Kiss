@@ -2,7 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
         message: 'Hello Vue!',
-        currentSection: 'estudio_mercado'
+        currentSection: 'tramites'
     },
     methods: {
         greet() {
